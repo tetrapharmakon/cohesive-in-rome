@@ -1,0 +1,78 @@
+\documentclass{amsart}
+
+\usepackage{fouche}
+
+\author{fouche}
+\def\xym#1{\vcenter{\xymatrix{#1}}}
+\title{cohesion}
+
+\begin{document}
+\maketitle
+\section{Introduction}
+\begin{definition}
+
+\end{definition}
+\begin{definition}
+  Let $(X,\tau)$ be a topological space; a \emph{sheaf on $X$} is a functor $F : \tau^\op\to \Set$ such that for every $U\in\tau$ and every covering $\{U_i\}$ of $U$ one has
+\end{definition}
+\begin{definition}
+  A \emph{sieve} on an object $X$ of a category $\clC$ is a subobject of the hom functor $yX = \clC(\firstblank,X)$; a \emph{Grothendieck topology} on a category amounts to the choice of a family of \emph{covering sieves} for every object $X\in\clC$; this family of sieves is chosen in such a way that
+  \begin{itemize}
+  \item if $S\To yX$ is a covering sieve and $f Y \to X$ is a morphism of $\clC$, then the morphism $f^S \To Y$ obtained in
+  \[\xym{
+  f^*S \pb \ar[r]\ar[d]& R S \ar[d]\\
+  Y \ar[r]_f & X
+  }\]
+  is again a covering sieve.
+  \item Let $S \To yX$ be a covering sieve on $X$, and let $T$ be any sieve on $X$. If for each object $Y$ of $\clC$ and each arrow $f : Y \to X$ in $SY$ the pullback sieve $f^*T$ is a covering sieve on $Y$. Then $T$ is a covering sieve on $X$.
+    \item
+  \end{itemize}
+\end{definition}
+\begin{definition}
+  A \emph{sheaf} on a small site $\clC$ is a functor $F : \clC^\op\to\Set$ such that for every covering sieve $R \to y(U)$ and every diagram
+  \[\xym{
+  R \ar[r]^f\ar[d]_m & F \\
+  y(U)\ar@{.>}[ur]
+  }\]
+  there is a unique dotted extension $y(U) \To F$ (by the Yoneda lemma, this consists of a unique element $s\in FU$). The full subcategory of sheaves on a site $(\clC,j)$ is denoted $\text{Sh}(\clC,j)$.
+\end{definition}
+By general facts on locally presentable categories, the subcategory of sheaves on a site is reflective via a functor
+\[
+r : \Cat(\clC^\op,\Set) \to \text{Sh}(\clC,j)
+\] called \emph{sheafification} of a presheaf $F : \clC^\op\to \Set$.
+
+Grothendieck was the first to note that in every topos of sheaves the internal language is sufficiently expressive to concoct higher-order logic and he strived to advertise his intuitions to an audience of logicians. But it wasn't until Lawvere devised the notion of \emph{elementary topos} that the community agreed on the potential of this theory.
+\begin{definition}
+  An \emph{elementary topos} is a category $\clE$ that
+  \begin{itemize}
+  \item is finitely complete (i.e. it admits finite products and equalizers, or a terminal object and pullbacks, or all limits of diagrams $D : \clJ \to \clE$ where $\clJ$ is a finite category);
+  \item is cartesian closed, i.e. the functor $A\times\firstblank$ has a right adjoint $[A,\firstblank]$ for every object $A\in\clE$
+  \item has a \emph{subobject classifier}, i.e. an object $\Omega\in\clE$ such that the functor $\text{Sub} : \clE^\op\to \Set$ sending $A$ into the set of isomorphism classes of monomorphisms $\var{U}{A}$ is representable by the object $\Omega$.
+  \end{itemize}
+  The natural bijection $\clE(A,\Omega)\cong\text{Sub}(A)$ is obtained pulling back the monomorphism $U\subseteq A$ along a \emph{universal arrow} $t : 1\to \Omega$, as in the diagram
+	\[
+		\vcenter{\xymatrix{
+				U \pb\ar[r]\ar[d]_m & 1\ar[d]^t \\
+				A \ar[r]_{\chi_U}& \Omega
+			}}
+	\]
+	so, the bijection is induced by the map $m\mapsto \chi_U$.
+\end{definition}
+\begin{definition}
+  copincolla da nLab
+\end{definition}
+\section{Cohesion}
+intuition for Cohesion
+
+cohesive topos
+
+properties and thms
+
+classes of cohesive toposes
+
+``moments of opposition''
+
+cohesion in smooth homotopy
+
+de Rham in a cohesive topos
+\end{document}

@@ -1,0 +1,14 @@
+#+TITLE: Cohesion in Rome
+#+AUTHOR: Fouche
+
+* Topos theory
+** Definizione di fascio su uno spazio
+** Definizione di fascio su un sito
+** Definizione di topos, Grothendicco ed elementare
+** Logica e omotopia dei topos
+* Cohesion
+** Intuizione sulla coesione
+** Definizione di coesione
+** Proprietà degli assiomi di coesione
+** "Momenti di opposizione"
+** Geometria continua, supergeometria, geometria rigida...
