@@ -1,14 +1,25 @@
 #+TITLE: Cohesion in Rome
-#+AUTHOR: Fouche
+#+AUTHOR: Fosco Loregian
+#+BEAMER_THEME: Rochester [height=20pt]
+
+#+BEAMER_FRAME_LEVEL: 3
+
 
 * Topos theory
-** Definizione di fascio su uno spazio
-** Definizione di fascio su un sito
-** Definizione di topos, Grothendicco ed elementare
-** Logica e omotopia dei topos
+* Definizione di fascio su uno spazio
+* Definizione di topa di Groto
+* Definizione di fascio su un sito
+* Definizione di topos, Grothendicco ed elementare
+* Groto = elem + locpres (finito)
+* Cat dei fasci è riflessiva, Giraud
+* Logica e omotopia dei topos
+
+
+
 * Cohesion
-** Intuizione sulla coesione
-** Definizione di coesione
-** Proprietà degli assiomi di coesione
-** "Momenti di opposizione"
-** Geometria continua, supergeometria, geometria rigida...
+* Intuizione sulla coesione
+* Definizione di coesione
+* Proprietà degli assiomi di coesione
+* "Momenti di opposizione"
+* Geometria continua, supergeometria, geometria rigida...
+* Un esempio workato out: de Rham in coesione

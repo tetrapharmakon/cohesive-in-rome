@@ -1,0 +1,226 @@
+% Created 2019-11-24 Sun 12:14
+% Intended LaTeX compiler: pdflatex
+\documentclass[presentation]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig,epigraph}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\let\pb\relax
+
+\def\yo{y}
+
+\usepackage{xparse}
+\usepackage[all,2cell]{xy}\UseAllTwocells
+
+\ExplSyntaxOn
+\NewDocumentCommand{\makeabbrev}{mmm}
+ {
+  \yoruk_makeabbrev:nnn { #1 } { #2 } { #3 }
+ }
+
+\cs_new_protected:Npn \yoruk_makeabbrev:nnn #1 #2 #3
+ {
+  \clist_map_inline:nn { #3 }
+   {
+    \cs_new_protected:cpn { #2 } { #1 { ##1 } }
+   }
+ }
+\ExplSyntaxOff
+
+\makeabbrev{\textbf}{bf#1}{
+  a,b,c,d,e,g,h,i,j,k,l,m,n,o,p,q,r,t,u,v,w,x,y,z,%
+  A,B,C,D,E,G,H,I,J,K,L,M,N,O,P,Q,R,T,U,V,W,X,Y,Z }
+\makeabbrev{\boldsymbol}{bs#1}{%
+    a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,%
+    A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z }
+\makeabbrev{\mathsf}{sf#1}{
+  a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,%
+  A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z }
+\makeabbrev{\mathfrak}{fk#1}{
+  a,b,c,d,e,f,g,h,j,k,i,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,%
+  A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z }
+\makeabbrev{\mathcal}{cl#1}{
+  A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z }
+\makeabbrev{\mathbb}{bb#1}{
+  A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z }
+
+\newlength{\seplen}
+\setlength{\seplen}{5pt}
+\newlength{\sepwid}
+\setlength{\sepwid}{.4pt}
+\def\firstblank{\,\rule{\seplen}{\sepwid}\,}
+\def\secondblank{\firstblank\llap{\raisebox{2pt}{\firstblank}}}
+\def\To{\Rightarrow}
+
+\def\Set{\mathbf{Set}}
+\newcommand{\op}{\text{op}}
+\usetheme{metropolis}
+\author{Fosco Loregian \\[3pt] \includegraphics[scale=.25]{logo.pdf}}
+\date{\today}
+\title{Cohesion in Rome}
+\hypersetup{
+ pdfauthor={Fosco Loregian},
+ pdftitle={Cohesion in Rome},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.3 (Org mode 9.2.5)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\begin{frame}{Outline}
+  \linespread{.66}
+  \epigraph{\tiny [\dots\unkern] vi el Aleph, desde todos los puntos, vi en el Aleph la tierra, y en la tierra otra vez el Aleph y en el Aleph la tierra, vi mi cara y mis vísceras, vi tu cara, y sentí vértigo y lloré\dots }{JLB}
+\linespread{1}
+Topos theory is a cornerstone of category theory linking together algebra, geometry and logic.
+
+Simply said, in each topos it is possible to re-enact the totality of known Mathematics; today we focus on 
+\begin{itemize}
+  \item Logic (better said, a fragment of \alert{dependent type theory})
+  \item Differential geometry
+  \item Algebraic topology
+  \item \dots
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[label={sec:org5a55f3f}]{Topos theory}
+\end{frame}
+\begin{frame}[label={sec:orgd0201f8}]{Definizione di fascio su uno spazio}
+  \begin{block}{}
+    Let $(X,\tau)$ be a topological space; a \emph{sheaf on $X$} is a functor $F : \tau^\op\to \Set$ such that for every $U\in\tau$ and every covering $\{U_i\}$ of $U$ one has
+    \begin{itemize}
+      \item<+-> if $s, t\in FU$ are such that $s|_i = t|_i$ in $FU_i$ for every $i\in I$, then $s=t$ in $FU$.
+      \item<+-> if $s_i\in FU_i$ is a family of elements such that $s_i|_{ij} = s_j|_{ij}$, then there exists a $s\in FU$ such that $s|_i = s_i$.\footnote{We denote $s|_i$ the image of $s\in FU$ under the nmeless map $FU\to FU_i$ induced by the inclusion $U_i\subseteq U$.}
+    \end{itemize}
+  \end{block}
+\end{frame}
+\begin{frame}{Examples of sheaves}
+  Every construction in Mathematics that exhibits a local character is a sheaf: 
+\begin{itemize}
+  \item<+-> sending $U\mapsto CU$, continuous functions with domain $U$ (similarly, differentiable, $C^\infty$, $C^\omega$, holomorphic\dots) 
+  \item<+-> sending $U\mapsto \Omega^pU$, differential forms supported on $U$ (similarly: distributions, test functions\dots)
+  \item<+-> \dots sending $U\mapsto \{f : U \to \mathbb R \mid f \text{ has property $P$ locally}\}$ for some $P$.
+\end{itemize}
+\onslide<+->
+  Every construction that does involve global properties, is not a sheaf:
+  \begin{itemize}
+    \item<+-> sending $U\mapsto \{\text{bounded functions } f : U \to \mathbb R\}$ 
+    \item<+-> sending $U\mapsto \{L^1\text{ functions } f : U \to \mathbb R\}$ 
+    \item<+-> \dots
+  \end{itemize}
+\end{frame}
+\begin{frame}[label={sec:org4e45118}]{Definizione di topa di Groto}
+  A \emph{sieve} on an object $X$ of a category $\clC$ is a subobject $S$ of the hom functor $\yo X = \clC(\firstblank,X)$; 
+  
+  A \emph{Grothendieck topology} on a category amounts to the choice of a family of \emph{covering sieves} for every object $X\in\clC$; this family of sieves is chosen in such a way that
+  \begin{itemize}
+  \item if $S\To \yo X$ is a covering sieve and $f : Y \to X$ is a morphism of $\clC$, then the morphism $f^* S \To Y$ obtained in the pullback
+  \[\xymatrix{
+  f^*S \ar@{}[dr]|\lrcorner \ar[r]\ar[d]& S \ar[d]\\
+  Y \ar[r]_f & X
+  }\]
+  is again a covering sieve.
+  \end{itemize}
+\end{frame}
+\begin{frame}
+  \begin{itemize}
+  \item Let $S \To yX$ be a covering sieve on $X$, and let $T$ be any sieve on $X$. If for each object $Y$ of $\clC$ and each arrow $f : Y \to X$ in $SY$ the pullback sieve $f^*T$ is a covering sieve on $Y$, then $T$ is a covering sieve on $X$.
+    \item the identity $1 : \yo X\To \yo X$ is a covering sieve.
+  \end{itemize}
+\alert{\tiny 
+\begin{itemize}
+  \item<+-> if $\{U_i\}$ covers $U$, then for every $V\subseteq U$ $V\cap U_i$ covers $V$;
+  \item<+-> if $\{U_i\}$ covers $U$ and $\{V_{ij}\}$ covers $U_i$, then $V_{ij}$ covers $U$;
+  \item<+-> $\{U\}$ covers $U$.
+\end{itemize}
+}
+\onslide<+->
+A \alert{Grothendieck site} is a category with a Grothendieck topology, i.e. a function $j$ that assigns to every object a family of covering sieves. 
+
+We denote a site as the pair $(\clC,j)$.
+\end{frame}
+\begin{frame}[label={sec:org9262f53}]{Definizione di fascio su un sito}
+  \begin{block}{}
+    A \emph{sheaf} on a small site $\clC$ is a functor $F : \clC^\op\to\Set$ such that for every covering sieve $R \to \yo U$ and every diagram
+    \[\xymatrix{
+    R \ar[r]^f\ar[d]_m & F \\
+    \yo U\ar@{.>}[ur]
+    }\]
+    there is a unique dotted extension $\yo U \To F$ (by the Yoneda lemma, this consists of a unique element $s\in FU$, \textbf{exercise}). 
+    
+    The full subcategory of sheaves on a site $(\clC,j)$ is denoted $\text{Sh}(\clC,j)$.
+  \end{block}
+\end{frame}
+\begin{frame}[label={sec:org5bf1529}]{Cat dei fasci è riflessiva, Giraud}
+  By general facts on locally presentable categories, the subcategory of sheaves on a site is reflective via a functor
+\[
+r : \textbf{Cat}(\clC^\op,\Set) \to \text{Sh}(\clC,j)
+\] called \emph{sheafification} of a presheaf $F : \clC^\op\to \Set$.
+
+\begin{block}{Historical note}
+  \vspace{3pt}
+  \scriptsize 
+Grothendieck was the first to note that in every topos of sheaves the \alert{internal language} is sufficiently expressive to concoct \alert{higher-order logic} and he strived to advertise his intuitions to an audience of logicians. 
+
+But it wasn't until Lawvere devised the notion of \alert{elementary topos} that the community agreed on the potential of this theory.
+\end{block}
+\end{frame}
+\begin{frame}[label={sec:org6a1b958}]{Definizione di topos elementare}
+  \begin{block}{}
+    An \emph{elementary topos} is a category $\clE$ that
+    \begin{itemize}
+    \item it has finite limits;% finitely complete (i.e. it admits finite products and equalizers, or a terminal object and pullbacks, or all limits of diagrams $D : \clJ \to \clE$ where $\clJ$ is a finite category);
+    \item is cartesian closed;%, i.e. the functor $A\times\firstblank$ has a right adjoint $[A,\firstblank]$ for every object $A\in\clE$
+    \item has a \emph{subobject classifier}, i.e. an object $\Omega\in\clE$ such that the functor $\text{Sub} : \clE^\op\to \Set$ sending $A$ into the set of isomorphism classes of monomorphisms $\begin{smallmatrix}{U}\\\downarrow\\{A}\end{smallmatrix}$ is representable by the object $\Omega$.
+    \end{itemize}
+  \end{block}
+  \end{frame}
+  \begin{frame}{Definizione di topos elementare}
+    The natural bijection $\clE(A,\Omega)\cong\text{Sub}(A)$ is obtained pulling back the monomorphism $U\subseteq A$ along a \emph{universal arrow} $t : 1\to \Omega$, as in the diagram
+    \[
+      \vcenter{\xymatrix@!=3mm{
+          U \ar@{}[dr]|\lrcorner \ar[r]\ar[d]_m & 1\ar[d]^t \\
+          A \ar[r]_{\chi_m}& \Omega
+        }}
+    \]
+    so, the bijection is induced by the maps 
+    \begin{itemize}
+      \item $\chi_{-} : \left[\begin{smallmatrix}
+        U \\ \downarrow \\ A
+      \end{smallmatrix} \right]\mapsto \chi_m$ and 
+      \item $-\times_\Omega t : \chi_U \mapsto \chi_U \times_\Omega t$.
+    \end{itemize}
+    \end{frame}
+\begin{frame}[label={sec:orgb2a88e9}]{Groto = elem + locpres (finito)}
+\end{frame}
+\begin{frame}[label={sec:org0dca741}]{Logica e omotopia dei topos}
+\end{frame}
+
+
+
+\begin{frame}[label={sec:orgcb4b6ea}]{Cohesion}
+\end{frame}
+\begin{frame}[label={sec:orga4beb22}]{Intuizione sulla coesione}
+\end{frame}
+\begin{frame}[label={sec:org16d4ce9}]{Definizione di coesione}
+\end{frame}
+\begin{frame}[label={sec:org47b3dfb}]{Proprietà degli assiomi di coesione}
+\end{frame}
+\begin{frame}[label={sec:org2997920}]{"Momenti di opposizione"}
+\end{frame}
+\begin{frame}[label={sec:orgecc0d62}]{Geometria continua, supergeometria, geometria rigida\ldots{}}
+\end{frame}
+\begin{frame}[label={sec:orgf9c79a3}]{Un esempio workato out: de Rham in coesione}
+\end{frame}
+\end{document}
