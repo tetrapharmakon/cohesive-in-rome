@@ -1,1 +1,1 @@
-latexmk -pdf -pvc cohes
+latexmk -pdf -pvc plan
