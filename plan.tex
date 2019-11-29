@@ -19,8 +19,8 @@
 	\begin{itemize}
 		\item<+-> Logic (better said, a fragment of \alert{dependent type theory})
 		\item<+-> Differential geometry
-		\item<+-> [Algebraic topology]
-		\item<+-> [\dots]
+		\item<+-> (Algebraic topology)
+		\item<+-> \dots
 	\end{itemize}
 \end{frame}
 %
@@ -181,9 +181,13 @@
 	\]
 	so, the bijection is induced by the maps
 	\begin{itemize}
-		\item<+-> $\chi_{-} : \left[\begin{smallmatrix}
+  \item<+-> $\chi_{-} : 
+  \left[
+   \begin{smallmatrix}
 					      U \\ \downarrow \\ A
-				      \end{smallmatrix} \right]\mapsto \chi_m$ and
+   \end{smallmatrix} 
+   \right]
+   \mapsto \chi_m$ and
 		\item<+-> $-\times_\Omega t : \chi_U \mapsto \chi_U \times_\Omega t$.
 	\end{itemize}
 \end{frame}
@@ -335,11 +339,10 @@
 	\begin{block}{}
 		\textbf{Formal fact.} Every quadruple of adjoints induces a triple of adjoints.
 	\end{block}
-	\onslide<+->
 	\begin{itemize}
-		\item<+-> There is an adjoint triple of idempotent co/monads on $\clH$, induced by the cohesion:
+		\item<2-> There is an adjoint triple of idempotent co/monads on $\clH$, induced by the cohesion:
 		      \[
-			      \alt<4>{
+			      \alt<3>{
 			      \xymatrix@C=3cm{
 			      \clH
 			      \ar@{}@<8pt>[r]|(.75)\perp
@@ -371,7 +374,7 @@
 			      \ar@<-15pt>[r]_\codisc & \clH
 			      }}
 		      \]
-		      % \onslide<+->
+		      \onslide<3->
 		      \[
 			      \begin{array}{ccccc}
 				      {\color{red}\text{monad}}    &  &
@@ -910,8 +913,54 @@
 %
 %
 %
-\begin{frame}[label={sec:orgf9c79a3}]{Un esempio workato out: de Rham in coesione}
+\begin{frame}[label={sec:orgf9c79a3}]{de Rham cohomology in cohesion}
+ \begin{itemize}
+ \item Let $\clH$ be a cohesive topos, and $0\to A$ a pointed object (e.g. an internal abelian group); then, $A$ fits into a pullback square 
+ \[\xymatrix{\flat_\text{dR}A\ar[r]\ar[d]\ar@{}[dr]|\lrcorner & \flat A \ar[d]\\ 
+ 0 \ar[r] & A }\]
+ where $\flat_\text{dR}A$ is the \alert{object of coefficients} for de Rham cohomology.
+ \item Let $X\in\clH$ any object; we define $\shape_\text{dR}X$ to be the pushout
+ \[\xymatrix{
+X \ar[r]\ar[d]& 0\ar[d] \\
+\shape X \ar[r] & \shape_\text{dR}X
+ }\]
+ where $\shape_\text{dR}X$ is the \alert{de Rham object} associated to $X$.
+ \end{itemize}
 \end{frame}
+%
+%
+%
+%
+%
+%
+\begin{frame}
+ There is an adjunction 
+ \[
+ \xymatrix{
+  {*/\clH}\ar@<5pt>[rr]^{\flat_\text{dR}} &&\ar@<5pt>[ll]^{\shape_\text{dR}} \clH
+ } 
+ \]
+ The mapping space $*/\clH(\shape_\text{dR}X,A)\cong \clH(X, \flat_\text{dR}A)$ is called the \alert{}{de Rham space} of $X$ with coefficients in $A$ and denoted $\mathbf{H}^0_\text{dR}(X,A)$.
+\end{frame}
+%
+%
+%
+%
+%
+\begin{frame}
+ Consider the pullback defining $\flat_\text{dR}A$ and apply the limit-preserving functor $\clH(X,-)$: the square
+ \[\xymatrix{\clH(X,\flat_\text{dR}A)\ar[r]\ar[d]\ar@{}[dr]|\lrcorner & \clH(X,\flat A) \ar[d]\\ 
+ 0 \ar[r] & \clH(X,A) }\]
+ remains a pullback and the object $\clH(X,\flat A)$ identifies to \alert{$A$-valued differential forms}, and the maps $X \to \flat_\text{dR}A$ are the \alert{flat} ones: under the $\shape\dashv \flat$ adjunction, a map $X\to \flat A$ mates to a smooth map $\shape X \to A$, corresponding to a square
+ $
+\begin{smallmatrix}
+ X &\to & 0 \\
+ \downarrow && \downarrow \\
+ \shape X &\to& A
+\end{smallmatrix}
+ $
+\end{frame}
+%
 %
 %
 %
