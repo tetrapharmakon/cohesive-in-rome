@@ -1,1 +1,3 @@
+latexmk -pdf tangent
+latexmk -pdf slice
 latexmk -pdf -pvc plan
