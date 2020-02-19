@@ -1,4 +1,4 @@
-\documentclass[presentation]{beamer}
+\documentclass[presentation,handout]{beamer}
 \input{preambolo}
 \author{Fosco Loregian \\[3pt] \includegraphics[scale=1.5]{logo.pdf}}
 \date{\today}
@@ -15,11 +15,11 @@
   Topos theory is a cornerstone of category theory linking together algebra, geometry and logic.
   
   \onslide<2->
-  Simply said, in each topos it is possible to re-enact the totality of known Mathematics; today we focus on
+  In each topos it is possible to re-enact Mathematics; today we focus on
   \begin{itemize}
     \item<3-> Logic (better said, a fragment of \alert{dependent type theory})
-    \item<4-> Differential geometry
-    \item<5-> (Algebraic topology)
+    \item<4-> Differential geometry (better said, iterated \alert{tangent bundles})
+    \item<5-> (Secretly, algebraic topology)
     \item<6-> \dots
   \end{itemize}
 \end{frame}
@@ -30,12 +30,12 @@
 %
 %
 %
-\begin{frame}[label={sec:orgd0201f8}]{Definizione di fascio su uno spazio}
+\begin{frame}{Sheaves on spaces}
   \begin{block}{}
     Let $(X,\tau)$ be a topological space; a \emph{sheaf on $X$} is a functor $F : \tau^\op\to \Set$ such that for every $U\in\tau$ and every covering $\{U_i\}$ of $U$ one has
     \begin{itemize}
-      \item<+-> if $s, t\in FU$ are such that $s|_i = t|_i$ in $FU_i$ for every $i\in I$, then $s=t$ in $FU$.
-      \item<+-> if $s_i\in FU_i$ is a family of elements such that $s_i|_{ij} = s_j|_{ij}$, then there exists a $s\in FU$ such that $s|_i = s_i$.\footnote{We denote $s|_i$ the image of $s\in FU$ under the nmeless map $FU\to FU_i$ induced by the inclusion $U_i\subseteq U$.}
+      \item<2-> if $s, t\in FU$ are such that $s|_i = t|_i$ in $FU_i$ for every $i\in I$, then $s=t$ in $FU$.
+      \item<3-> if $s_i\in FU_i$ is a family of elements such that $s_i|_{ij} = s_j|_{ij}$, then there exists a $s\in FU$ such that $s|_i = s_i$.\footnote{We denote $s|_i$ the image of $s\in FU$ under the nameless map $FU\to FU_i$ induced by the inclusion $U_i\subseteq U$.}
     \end{itemize}
   \end{block}
 \end{frame}
@@ -47,11 +47,11 @@
 %
 %
 \begin{frame}{Examples of sheaves}
-  Every construction in Mathematics that exhibits a local character is a sheaf:
+  Every construction in Mathematics that exhibits a \alert{local} character is a sheaf:
   \begin{itemize}
-    \item<+-> sending $U\mapsto CU$, continuous functions with domain $U$ (similarly, differentiable, $C^\infty$, $C^\omega$, holomorphic\dots)
-    \item<+-> sending $U\mapsto \Omega^pU$, differential forms supported on $U$ (similarly: distributions, test functions\dots)
-    \item<+-> \dots sending $U\mapsto \{f : U \to \mathbb R \mid f \text{ has property $P$ locally}\}$ for some $P$.
+    \item<2-> sending $U\mapsto CU$, continuous functions with domain $U$ (similarly, differentiable, $C^\infty$, $C^\omega$, holomorphic\dots)
+    \item<3-> sending $U\mapsto \Omega^pU$, differential forms supported on $U$ (similarly: distributions, test functions\dots)
+    \item<4-> \dots sending $U\mapsto \{f : U \to \mathbb R \mid f \text{ has property $P$ locally}\}$ for some $P$.
   \end{itemize}
   \onslide<+->
   Every construction that does involve global properties, is not a sheaf:
@@ -68,19 +68,28 @@
 %
 %
 %
-\begin{frame}[label={sec:org4e45118}]{Grothendieck topologies}
-  A \emph{sieve} on an object $X$ of a category $\clC$ is a subobject $S$ of the hom functor $\yo X = \clC(\firstblank,X)$;
+\begin{frame}{Grothendieck topologies}
+  A \alert{sieve} on an object $X$ of a category $\clC$ is a subobject $S$ of the hom functor $\yo X = \clC(\firstblank,X)$;
   
   \onslide<2->
-  A \emph{Grothendieck topology} on a category amounts to the choice of a family of \emph{covering sieves} for every object $X\in\clC$; this family of sieves is chosen in such a way that
+  A \alert{Grothendieck topology} on a category amounts to the choice of a family of \alert{covering sieves} for every object $X\in\clC$; this family of sieves is chosen in such a way that
+
+  [
+  {\tiny list of axioms abstracting the fact that 
   \begin{itemize}
-    \item<3-> if $S\To \yo X$ is a covering sieve and $f : Y \to X$ is a morphism of $\clC$, then the morphism $f^* S \To Y$ obtained in the pullback
-    \[\xymatrix{
-    f^*S \ar@{}[dr]|\lrcorner \ar[r]\ar[d]& S \ar[d]\\
-    Y \ar[r]_f & X
-    }\]
-    is again a covering sieve.
-  \end{itemize}
+    \item<2-> if $\{U_i\}$ covers $U$, then for every $V\subseteq U$ $V\cap U_i$ covers $V$;
+    \item<3-> if $\{U_i\}$ covers $U$ and $\{V_{ij}\}$ covers $U_i$, then $V_{ij}$ covers $U$;
+    \item<4-> $\{U\}$ covers $U$.
+  \end{itemize}}
+  ]
+  % \begin{itemize}
+  %   \item<3-> if $S\To \yo X$ is a covering sieve and $f : Y \to X$ is a morphism of $\clC$, then the morphism $f^* S \To Y$ obtained in the pullback
+  %   \[\xymatrix{
+  %   f^*S \ar@{}[dr]|\lrcorner \ar[r]\ar[d]& S \ar[d]\\
+  %   Y \ar[r]_f & X
+  %   }\]
+  %   is again a covering sieve.
+  % \end{itemize}
 \end{frame}
 %
 %
@@ -90,17 +99,17 @@
 %
 %
 \begin{frame}{Grothendieck topologies}
-  \begin{itemize}
-    \item<+-> Let $S \To yX$ be a covering sieve on $X$, and let $T$ be any sieve on $X$. If for each object $Y$ of $\clC$ and each arrow $f : Y \to X$ in $SY$ the pullback sieve $f^*T$ is a covering sieve on $Y$, then $T$ is a covering sieve on $X$.
-    \item<+-> the identity $1 : \yo X\To \yo X$ is a covering sieve.
-  \end{itemize}
-  \alert{\tiny
-  \begin{itemize}
-    \item<+-> if $\{U_i\}$ covers $U$, then for every $V\subseteq U$ $V\cap U_i$ covers $V$;
-    \item<+-> if $\{U_i\}$ covers $U$ and $\{V_{ij}\}$ covers $U_i$, then $V_{ij}$ covers $U$;
-    \item<+-> $\{U\}$ covers $U$.
-  \end{itemize}
-  }
+  % \begin{itemize}
+  %   \item<+-> Let $S \To yX$ be a covering sieve on $X$, and let $T$ be any sieve on $X$. If for each object $Y$ of $\clC$ and each arrow $f : Y \to X$ in $SY$ the pullback sieve $f^*T$ is a covering sieve on $Y$, then $T$ is a covering sieve on $X$.
+  %   \item<+-> the identity $1 : \yo X\To \yo X$ is a covering sieve.
+  % \end{itemize}
+  % \alert{\tiny
+  % \begin{itemize}
+  %   \item<+-> if $\{U_i\}$ covers $U$, then for every $V\subseteq U$ $V\cap U_i$ covers $V$;
+  %   \item<+-> if $\{U_i\}$ covers $U$ and $\{V_{ij}\}$ covers $U_i$, then $V_{ij}$ covers $U$;
+  %   \item<+-> $\{U\}$ covers $U$.
+  % \end{itemize}
+  % }
   \onslide<+->
   A \alert{Grothendieck site} is a category with a Grothendieck topology, i.e. a function $j$ that assigns to every object a family of covering sieves.
   
@@ -114,16 +123,16 @@
 %
 %
 %
-\begin{frame}[label={sec:org9262f53}]{Sheaves on a site}
+\begin{frame}{Sheaves on a site}
   \begin{block}{}
-    A \emph{sheaf} on a small site $\clC$ is a functor $F : \clC^\op\to\Set$ such that for every covering sieve $R \to \yo U$ and every diagram
+    A \alert{sheaf} on a small site $\clC$ is a functor $F : \clC^\op\to\Set$ such that for every covering sieve $R \to \yo U$ and every diagram
     \[\xymatrix{
     R \ar[r]^f\ar[d]_m & F \\
     \yo U\ar@{.>}[ur]
     }\]
     there is a unique dotted extension $\yo U \To F$ 
     \onslide<2->
-    (by the Yoneda lemma, this consists of a unique element $s\in FU$, \textbf{exercise}).
+    (by the Yoneda lemma, this consists of a unique element $s\in FU$: exercise, derive the sheaf axioms from this).
     
     \onslide<3->
     The full subcategory of sheaves on a site $(\clC,j)$ is denoted $\text{Sh}(\clC,j)$.
@@ -136,18 +145,18 @@
 %
 %
 %
-\begin{frame}[label={sec:org5bf1529}]{Giraud Theorem}
+\begin{frame}{Giraud Theorem}
   By general facts on locally presentable categories, the subcategory of sheaves on a site is reflective via a functor
   \[
   r : \text{Cat}(\clC^\op,\Set) \to \text{Sh}(\clC,j)
   \] called \emph{sheafification} of a presheaf $F : \clC^\op\to \Set$.
   
   \onslide<2->
-  \begin{myblock}{Historical note}
+  \begin{myblock}{}%{Historical note}
     \scriptsize
-    Grothendieck was the first to note that in every topos of sheaves the \alert{internal language} is sufficiently expressive to concoct \alert{higher-order logic} and he strived to advertise his intuitions to an audience of logicians.
+    Grothendieck was the first to note that in every topos of sheaves the \textbf{internal language} is sufficiently expressive to concoct \textbf{higher-order logic} and he strived to advertise his intuitions to an audience of logicians.
     
-    But it wasn't until Lawvere devised the notion of \alert{elementary topos} that the community agreed on the potential of this theory.
+    But it wasn't until Lawvere devised the notion of \textbf{elementary topos} that the community agreed on the potential of this theory.
   \end{myblock}
 \end{frame}
 %
@@ -157,12 +166,12 @@
 %
 %
 %
-\begin{frame}[label={sec:org6a1b958}]{Elementary toposes}
+\begin{frame}{Elementary toposes}
   \begin{block}{}
     An \emph{elementary topos} is a category $\clE$ that
     \begin{itemize}
-      \item<+-> it has finite limits;
-      \item<+-> is cartesian closed;
+      \item<+-> it has finite limits (products, equalizers, pullbacks);
+      \item<+-> is cartesian closed (every $A\times\firstblank$ has a right adjoint);
     \item<+-> has a \emph{subobject classifier}, i.e. an object $\Omega\in\clE$ such that the functor $\text{Sub} : \clE^\op\to \Set$ sending $A$ into the set of isomorphism classes of monomorphisms $\begin{smallmatrix}{U}\\\downarrow\\{A}\end{smallmatrix}$ is representable by the object $\Omega$.
     \end{itemize}
   \end{block}
@@ -175,14 +184,14 @@
 %
 %
 \begin{frame}{Elementary toposes}
-  The natural bijection $\clE(A,\Omega)\cong\text{Sub}(A)$ is obtained pulling back a ``characteristic arrow'' $\chi_U : A \to \Omega$ along a \emph{universal arrow} $t : 1\to \Omega$ to obtain the monic $U$, as in the diagram
+  The natural bijection $\clE(A,\Omega)\cong\text{Sub}(A)$ is obtained pulling back a ``characteristic arrow'' $\chi_U : A \to \Omega$ along a \alert{universal arrow} $t : 1\to \Omega$ to obtain the monic $U$, as in the diagram
   \[
   \vcenter{\xymatrix@!=3mm{
   U \ar@{}[dr]|\lrcorner \ar[r]\ar[d]_m & 1\ar[d]^t \\
   A \ar[r]_{\chi_m}& \Omega
   }}
   \]
-  so, the bijection is induced by the maps
+The bijection is induced by the maps
   \begin{itemize}
     \item<+-> $\chi_{-} : 
     \left[
@@ -201,7 +210,7 @@
 %
 %
 %
-\begin{frame}[label={sec:orgb2a88e9}]{Grothendieck $\subset$ elementary}
+\begin{frame}{Grothendieck $\subset$ elementary}
   \epigraph{\tiny En los libros herméticos está escrito que lo que hay abajo es igual a lo que hay arriba, y lo que hay arriba, igual a lo que hay abajo; en el Zohar, que el mundo inferior es reflejo del superior.$^\dag$}{JLB}
   \begin{itemize}
     \item<+-> Every Grothendieck topos is elementary;
@@ -220,31 +229,31 @@
 %
 %
 %
-\begin{frame}{Logic of categories}
-  What is the internal logic of a category? 
+% \begin{frame}{Logic of categories}
+%   What is the internal logic of a category? 
   
-  This would have deserved a dedicated seminar but:
-  \begin{itemize}
-    \item<2-> Every category $\clC$ is a universe in which we can interpret type theory;
-    \item<3-> every object $A\in \clC$ is a type --a term in the type of types:
-    \item<4-> every morphism $X \to A$ is a (generalised) term of type $A$, in a context $X$.
-  \end{itemize}
+%   This would have deserved a dedicated seminar but:
+%   \begin{itemize}
+%     \item<2-> Every category $\clC$ is a universe in which we can interpret type theory;
+%     \item<3-> every object $A\in \clC$ is a type --a term in the type of types:
+%     \item<4-> every morphism $X \to A$ is a (generalised) term of type $A$, in a context $X$.
+%   \end{itemize}
   
-  \onslide<5->
-  This can be made precise in various ways:
+%   \onslide<5->
+%   This can be made precise in various ways:
   
-  \url{https://ncatlab.org/nlab/show/relation+between+type+theory+and+category+theory}
-\end{frame}
-%
-%
-%
-%
-%
-%
-\begin{frame}[label={sec:org0dca741}]{Logic of toposes}
-  \includegraphics[width=\textwidth]{type-ct.png}
-\end{frame}
-%
+%   \url{https://ncatlab.org/nlab/show/relation+between+type+theory+and+category+theory}
+% \end{frame}
+% %
+% %
+% %
+% %
+% %
+% %
+% \begin{frame}{Logic of toposes}
+%   \includegraphics[width=\textwidth]{type-ct.png}
+% \end{frame}
+% %
 %
 %
 %
@@ -281,7 +290,9 @@
 %
 \begin{frame}{What is cohesion}
   \onslide<+->
-  Classes of geometric spaces exhibit similar coagulation properties, \onslide<+->similar to internal forces leading them to adhere and form \alert{coherent conglomerates}. \onslide<+->This behaviour is typical of \alert{smooth spaces}.
+  Classes of geometric spaces exhibit similar coagulation properties, \onslide<+->similar to internal forces leading them to adhere and form \alert{coherent conglomerates}. 
+  
+  \onslide<+->This behaviour is typical of \alert{smooth spaces}.
   
   \medskip
   
@@ -290,7 +301,7 @@
   \end{variableblock}
   \vspace*{\fill}
   \onslide<+->\begin{variableblock}{Question}{bg=red!10, fg=black}{bg=red!10, fg=blue}
-    Which formal axioms describe the mathematics behind this intuition? What is \emph{axiomatic cohesion}?
+    Which axioms formalize this intuition? What is \emph{axiomatic cohesion}?
   \end{variableblock}
   
   \vspace*{\fill}
@@ -313,11 +324,7 @@
       \item<+-> \emph{discretely}, with a functor $\Set\to\clH$ that regards every singleton of $S$ as a cohesive droplet;
       \item<+-> \emph{codiscretely}, with a functor $\Set\to\clH$ that regards the whole $S$ as an unseparable cohesive droplet.
     \end{itemize}
-    \item<+-> Discretely and codiscretely cohesive spaces embed  in $\clH$, with fully faithful functors: in that
-    \begin{gather*}
-      \clH(\disc(S),\disc(T))\cong \Set(S,T) \\
-      \clH(\codisc(S),\codisc(T))\cong \Set(S,T)
-    \end{gather*}
+    \item<+-> Discretely and codiscretely cohesive spaces embed  in $\clH$, with fully faithful functors.%: in that
   \end{itemize}
 \end{frame}
 %
@@ -373,14 +380,14 @@
     \ar@{}@<-8pt>[r]|(.75)\perp
     \ar@[red]@<15pt>[r]^{\color{red}\Pi}
     \ar@[blue]@{<-}[r]|{\color{blue}\disc}
-    \ar@[green!60!black]@<-15pt>[r]_{\color{green!60!black}\Gamma}
+    \ar@[dagreen]@<-15pt>[r]_{\color{dagreen}\Gamma}
     &
     \Set
     \ar@{}@<8pt>[r]|(.75)\perp
     \ar@{}@<-8pt>[r]|(.75)\perp
     \ar@[red]@<15pt>[r]^{\color{red}\disc}
     \ar@[blue]@{<-}[r]|{\color{blue}\Gamma}
-    \ar@[green!60!black]@<-15pt>[r]_{\color{green!60!black}\codisc}
+    \ar@[dagreen]@<-15pt>[r]_{\color{dagreen}\codisc}
     &
     \clH}
     }{\xymatrix@C=3cm{
@@ -403,15 +410,15 @@
     \begin{array}{ccccc}
       {\color{red}\text{monad}}    &  &
       {\color{blue}\text{comonad}} &  &
-      {\color{green!60!black}\text{monad}}                                           \\
+      {\color{dagreen}\text{monad}}                                           \\
       
       {\color{red}\shape}          &  &
       {\color{blue}(-)^\flat}      &  &
-      {\color{green!60!black}(-)^\sharp}                                             \\
+      {\color{dagreen}(-)^\sharp}                                             \\
       
       {\color{red}\disc\circ\Pi}
       &  & {\color{blue}\disc\circ\Gamma} &  &
-      {\color{green!60!black}\codisc\circ\Gamma}                                     \\
+      {\color{dagreen}\codisc\circ\Gamma}                                     \\
       
       \text{pron.: \emph{shape}}   &  &
       \text{pron.: \emph{flat}}    &  &
@@ -440,7 +447,9 @@
   \]
   is called the \alert{shape, flat, sharp} string of ``co/modalities'' (idempotent co/monads) for the cohesive topos $\clH$.
   
-  The \alert{shape} of $X \in\clH$ is the discrete object on the ``fundamental groupoid'' of $X$. The adjunction $\Pi\dashv\disc$ has something to do with (topological) Galois theory.
+  The \alert{shape} of $X \in\clH$ is the discrete object on the ``fundamental groupoid'' of $X$. 
+  
+  \textbf{Idea.} The adjunction $\Pi\dashv\disc$ has something to do with (topological) Galois theory.
 \end{frame}
 %
 %
@@ -458,7 +467,10 @@
       \text{principal}\\
       \text{bundles on $X$}
     \end{smallmatrix}
-    \right\} \cong \Big[ X \to BG \Big]\qquad\qquad
+    \right\} \cong 
+    \left\{ 
+      \vcenter{\xymatrix{X \ar[r]\ar[r]& BG}}
+    \right\}\qquad
     \left\{
     \begin{smallmatrix}
       \text{flat con-}\\
@@ -467,13 +479,13 @@
     \right\}
     \cong\left\{
     \vcenter{\xymatrix@R=4mm@C=4mm{
-    & \flat BG \ar[d]\\
+    & BG^{\flat} \ar[d]\\
     X \ar[r]\ar@{.>}[ur]& BG
     }}\right\}
     \]
     (keep in mind this equivalences: they will reappear later)
-    \item<+-> \alert{sharp} of $X$, $\sharp X$, corresponds to the codiscrete object on the sets of \alert{points} $\Gamma X$ of $X$.
-    \item<+-> Co/discrete objects are precisely the objects for which $\flat X \cong X$, resp. $\sharp Y \cong Y$.
+    \item<+-> \alert{sharp} of $X$, $X^{\sharp}$, corresponds to the codiscrete object on the sets of \alert{points} $\Gamma X$ of $X$.
+    \item<+-> Co/discrete objects are precisely the objects for which $X^{\flat} \cong X$, resp. $Y^{\sharp} \cong Y$.
   \end{enumerate}
 \end{frame}
 %
@@ -527,15 +539,15 @@
 %
 %
 %
-\begin{frame}{Discrete and concrete}
-  \begin{prop}
-    \begin{itemize}
-      \item The adjunctions $\Pi\dashv\disc$ and $\Gamma\dashv\codisc$ exhibit the subcategories of discrete and codiscrete objects as reflective subcategories of $\clH$; these subcategories form \alert{exponential ideals} in $\clH$.
-      \item If $\clH$ exhibits cohesion, then $\Set$ is equivalent to the full subcategory of $\clH$ whose objects are the $X$ such that $\eta_{(\Gamma\dashv\codisc),X}\colon X\to \codisc(\Gamma(X))$ is an isomorphism.
-    \end{itemize}
-  \end{prop}
-  Equivalently: every cohesive topos ``contains the trivial cohesion of disconnected pieces (=$\Set$)''.
-\end{frame}
+% \begin{frame}{Discrete and concrete}
+%   \begin{prop}
+%     \begin{itemize}
+%       \item<2-> The adjunctions $\Pi\dashv\disc$ and $\Gamma\dashv\codisc$ exhibit the subcategories of discrete and codiscrete objects as reflective subcategories of $\clH$; these subcategories form \alert{exponential ideals} in $\clH$.
+%       \item<3-> If $\clH$ exhibits cohesion, then $\Set$ is equivalent to the full subcategory of $\clH$ whose objects are the $X$ such that $\eta_{(\Gamma\dashv\codisc),X}\colon X\to \codisc(\Gamma(X))$ is an isomorphism.
+%     \end{itemize}
+%   \end{prop}
+%   \onslide<4-> Equivalently: every cohesive topos ``contains the trivial cohesion of disconnected pieces (=$\Set$)''.
+% \end{frame}
 %
 %
 %
@@ -543,14 +555,9 @@
 %
 %
 %
-\begin{frame}{Non-trivial fact}
-  \begin{variableblock}{}{bg=blue!10, fg=black}{bg=blue!10, fg=blue}
-    Whenever a topos arises, there's an interaction between logic and geometry.
-  \end{variableblock}
-  \onslide<+->
-  \small
+\begin{frame}{Example of modal truth}
   \begin{df}
-    A monomorphism $\psi\colon S\to A$ in a cohesive topos $\clH$ is a proposition of type $A$ in the internal logic of $\clH$. We say that $\psi$ is \emph{discretely true} if the pullback $\psi^*(S) \to A$
+    $\psi\colon S\hookrightarrow A$ in a cohesive topos $\clH$ is a proposition of type $A$ in the internal logic of $\clH$. We say that $\psi$ is \emph{discretely true} if the pullback $\psi^*(S) \to A$
     \[
     \xymatrix@!=4mm{
     \psi^*(S) \ar[r]\ar[d]\ar@{}[dr]|\lrcorner & \flat S \ar[d]^{\flat\psi} \\
@@ -567,7 +574,7 @@
 %
 %
 %
-\begin{frame}
+\begin{frame}{Example of modal truth}
   \begin{itemize}
     \item<+-> Discrete truth specifies a \alert{mode/modality} in which a proposition can be true. Propositions true over all discrete objects (i.e., such that $\flat\psi$ is an iso) are discretely true.
     \item<+-> Let $\clH = \text{Sh}(Cart,J)$ be the topos of sheaves over cartesian spaces ($\hom(m,n) = \text{smooth maps }\mathbb{R}^n\to \mathbb{R}^m$) is cohesive. \item<+-> Let $\psi\colon Z^p(U) \hookrightarrow \Omega^p(U)$ be the proposition in $\clH$ given by ``the $p$-form $\omega$ is closed on a neighbourhood $V_x\subseteq U$ of a point $x\in U$''. Then $\psi$ is discretely true (``every form is closed over a discrete space'').
@@ -592,13 +599,13 @@
 %
 %
 %
-\begin{frame}{The Sierpiński topos}
+\begin{frame}{EX: The Sierpiński topos}
   Let $\clC = \{0\to 1\}$ be the interval category with a unique non-identity arrow.
   \onslide<+->
   
   \medskip
   
-  The category of \alert{presheaves} on $\clC$ forms a topos $\clH=\Set^{\clC} =$ arrows in $\Set$, that exhibits cohesion:
+  The category $\clH = \text{Cat}(\clC,\Set)$ exhibits cohesion: an object in $\clH$ is an arrow in $\Set$, and
   \begin{itemize}
     \item<+-> the functor \alert{$\Pi$} sends an object $S\to I$ to its \alert{codomain} $I$;
     \item<+-> the functor \alert{$\Gamma$} sends an object $S\to I$ to its \alert{domain} $S$;
@@ -613,7 +620,7 @@
 %
 %
 %
-\begin{frame}{The Sierpiński topos}
+\begin{frame}{EX: The Sierpiński topos}
   Evidently these functors form an adjunction $(\Pi\dashv\disc\dashv\Gamma\dashv\codisc)$ so that $\clH$ exhibits cohesion; this matches our intuition, in that
   \begin{variableblock}{}{bg=red!10, fg=black}{bg=red!10, fg=blue}
     \begin{itemize}
@@ -630,7 +637,7 @@
 %
 %
 %
-\begin{frame}{Pointed categories exhibit cohesion}
+\begin{frame}{EX: Pointed categories}
   \def\coconst{\rotatebox[origin=c]{180}{$K$}}
   Let $\clC$ small and with a terminal object. Then there exists a triple
   \[
@@ -659,26 +666,26 @@
 %
 %
 %
-\begin{frame}{Reflexive directed graphs}
-  Consider the category $\clC$
-  \[
-  \xymatrix{
-  0 \ar@<6pt>[r]^s \ar@<-6pt>[r]_t & \ar[l]|q 1
-  }
-  \]
-  such that $0 \rightrightarrows 1 \to 0$ is a reflexive coequalizer;
+% \begin{frame}{EX: Reflexive directed graphs}
+%   Consider the category $\clC$
+%   \[
+%   \xymatrix{
+%   0 \ar@<6pt>[r]^s \ar@<-6pt>[r]_t & \ar[l]|q 1
+%   }
+%   \]
+%   such that $0 \rightrightarrows 1 \to 0$ is a reflexive coequalizer;
   
-  \onslide<+->
-  The category $[\clC^\text{op},\Set]$ is the category of \alert{reflexive directed graphs} $\text{RDGph}$, and it exhibits cohesion, since the terminal geometric morphism
-  \[
-  (\disc\dashv\Gamma)\colon \text{RDGph} \leftrightarrows \Set
-  \]
-  extends on the left with $\Pi\colon X \mapsto \text{coeq}\Big( X_1 \rightrightarrows X_0\Big)$ (simply the connected components of the graph).
+%   \onslide<+->
+%   The category $[\clC^\text{op},\Set]$ is the category of \alert{reflexive directed graphs} $\text{RDGph}$, and it exhibits cohesion, since the terminal geometric morphism
+%   \[
+%   (\disc\dashv\Gamma)\colon \text{RDGph} \leftrightarrows \Set
+%   \]
+%   extends on the left with $\Pi\colon X \mapsto \text{coeq}\Big( X_1 \rightrightarrows X_0\Big)$ (simply the connected components of the graph).
   
-  Since this is a reflexive coequalizer, it preserves products.
+%   Since this is a reflexive coequalizer, it preserves products.
   
-  (exercise: define $\disc, \codisc$)
-\end{frame}
+%   (exercise: define $\disc, \codisc$)
+% \end{frame}
 %
 %
 %
@@ -686,7 +693,7 @@
 %
 %
 %
-\begin{frame}{Simplicial sets}
+\begin{frame}{EX: Simplicial sets}
   \begin{prop}
     Let $\boldsymbol\Delta$ be the \alert{simplex category} having objects nonempty finite ordinals and morphisms monotone maps. The topos $\clH=[\boldsymbol\Delta^\text{op}, \Set]$ exhibits cohesion, and in $\clH$ pieces have points.
   \end{prop}
@@ -704,7 +711,7 @@
 %
 %
 %
-\begin{frame}{Tangent cohesion}
+\begin{frame}{EX: Tangent cohesion}
   Consider the \alert{codomain fibration}
   \[
   \xymatrix{
@@ -749,10 +756,10 @@
 %
 \begin{frame}{Tangent cohesion}
   \begin{prop}
-    There is a functor $\delta\colon T\clC\to \clC$ giving for each morphism in $T\clC$ its domain. This functor is a right adjoint to a functor $\Omega\colon \clC\to T\clC$ that is also a \emph{section} for $q$.
+    Functor $\delta\colon T\clC\to \clC$ = domain projection. Has left adjoint the functor $\Omega\colon \clC\to T\clC$ that is also a \emph{section} for $q$.
     
     \onslide<+->
-    The object $\Omega(A)$ can be thought as the complex of \alert{differential forms} on an internal abelian group $A\in \text{Ab}(\clC/X)$.
+    $\Omega(A)$ = the complex of \alert{differential forms} on an internal abelian group $A\in \text{Ab}(\clC/X)$.
   \end{prop}
   
   \onslide<+->
@@ -761,9 +768,9 @@
   
   \onslide<+->
   \vspace*{\fill}
-  \begin{prop}
-    If $\clH$ is a cohesive topos with cohesion $(\Pi\dashv\disc\dashv\Gamma\dashv\codisc)$, then the tangent category is itself a cohesive topos.
-  \end{prop}
+  \begin{myblock}{Fact}
+    The tangent category to a cohesive topos is itself a cohesive topos.
+  \end{myblock}
 \end{frame}
 %
 %
@@ -772,12 +779,12 @@
 %
 %
 %
-\begin{frame}{Infinitesimal cohesion}
-  \begin{variableblock}{}{bg=red!10, fg=black}{bg=red!10, fg=blue}
-    Neighbourhoods of some spaces are ``infintesimally extended around a single (global) point''. Cohesive structure can be refined to capture this phenomenon.
-  \end{variableblock}
-\end{frame}
-%
+% \begin{frame}{Infinitesimal cohesion}
+%   \begin{variableblock}{}{bg=red!10, fg=black}{bg=red!10, fg=blue}
+%     Neighbourhoods of some spaces are ``infintesimally extended around a single (global) point''. Cohesive structure can be refined to capture this phenomenon.
+%   \end{variableblock}
+% \end{frame}
+% %
 %
 %
 %
@@ -804,9 +811,9 @@
   
   If such a structure exists, $\clH$ ``exhibits \textbf{infinitesimal} cohesion''.
   \onslide<6->
-  \begin{myblock}{}
-    The functor $i_*$ is fully faithful as well, and then we can consider $\clH$ ``sitting nicely'' inside its thickening $\thH$.
-  \end{myblock}
+  \begin{variableblock}{}{bg=red!10, fg=black}{bg=red!10, fg=blue}
+    \small Neighbourhoods of some spaces are ``infintesimally extended around a single (global) point''. Cohesive structure can be refined to capture this phenomenon.
+  \end{variableblock}
 \end{frame}
 %
 %
@@ -952,7 +959,7 @@
 %
 %
 %
-\begin{frame}[label={sec:orgf9c79a3}]{de Rham cohomology in cohesion}
+\begin{frame}{de Rham cohomology in cohesion}
   \begin{itemize}
     \item Let $\clH$ be a cohesive topos, and $0\to A$ a pointed object (e.g. an internal abelian group); then, $A$ fits into a pullback square 
     \[\xymatrix{\flat_\text{dR}A\ar[r]\ar[d]\ar@{}[dr]|\lrcorner & \flat A \ar[d]\\ 
